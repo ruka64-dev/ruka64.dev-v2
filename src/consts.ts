@@ -1,3 +1,3 @@
 export const config = {
-	siteName: 'るかのお部屋',
+	siteName: "るかのお部屋",
 };
