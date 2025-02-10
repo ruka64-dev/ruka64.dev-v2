@@ -8,12 +8,9 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title='Home' description="Hello, I'm ruka64(るか)。">
-	<div class="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-		<main class='flex flex-col gap-8 row-start-2 items-center sm:items-start'><Hero client:load /></main>
+	<div class="flex justify-center align-top min-h-screen mt-24 pb-20 gap-16 sm:p-20">
+		<main class='flex flex-col gap-8 items-center sm:items-start'>
+			<Hero client:load />
+		</main>
 	</div>
-	<h1>Hi!</h1>
-	<h1>Hi!</h1>
-	<h1>Hi!</h1>
-	<h1>Hi!</h1>
-	<h1>Hi!</h1>
 </Layout>
