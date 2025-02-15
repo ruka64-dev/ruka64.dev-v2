@@ -1,0 +1,54 @@
+---
+import type { CollectionEntry } from "astro:content";
+import DateFormatter from "../components/DateFormatter.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, draft } = Astro.props;
+---
+
+<article class="flex flex-col items-center mt-8">
+	<div class="sm:w-[50rem] w-full">
+		<div>
+			<h1 class="text-3xl font-bold mb-2">{title}</h1>
+			<div>
+				<DateFormatter date={pubDate} />
+				{
+					updatedDate && (
+						<div>
+							Updated at <DateFormatter date={updatedDate} />
+						</div>
+					)
+				}
+			</div>
+			{draft && <p class="text-yellow-300 font-semibold">This is draft post!</p>}
+			<hr />
+		</div>
+		<div
+			class:list={[
+				"prose",
+				"dark:prose-invert",
+				"prose-h1:font-bold",
+				"prose-h2:font-bold",
+				"prose-h3:font-bold",
+				"prose-h4:font-bold",
+				"prose-h1:text-4xl",
+				"prose-h2:text-3xl",
+				"prose-h3:text-2xl",
+				"prose-h4:text-xl",
+				"prose-img:rounded-xl",
+				"prose-img-m-0",
+				"prose-pre:m-0",
+				"prose-code:m-0",
+				"prose-h1:mt-2",
+				"prose-h1:mb-2",
+				"prose-p:mt-2",
+				"prose-p:mb-2",
+				"prose-a:mt-2",
+				"prose-a:mb-2",
+			]}
+		>
+			<slot />
+		</div>
+	</div>
+</article>

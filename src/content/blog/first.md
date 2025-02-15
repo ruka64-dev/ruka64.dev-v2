@@ -8,3 +8,13 @@ pubDate: "2025-02-15 12:00"
 # Hello World!
 
 First Post.
+
+UwU~ Hello World!
+
+**bold!** ~~text~~
+
+Code block:
+
+```ts
+console.log("Hello World!");
+```
