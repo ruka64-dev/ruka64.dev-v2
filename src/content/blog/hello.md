@@ -30,7 +30,7 @@ Astro+React+Tailwindをくっつけて作ってます。
 
 ## 画像テスト
 
-![icon](/public/content/images/icon.jpg)
+![icon](/content/images/icon.jpg)
 
 ## コードブロック
 
