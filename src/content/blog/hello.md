@@ -1,6 +1,51 @@
 ---
 draft: "false"
-title: "First post"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "2025-02-15 12:00"
+title: "サイトを作り直した話"
+description: "サイトを作り直した経緯について"
+pubDate: "2025-02-16 00:00"
 ---
+
+# こんにちは！
+
+るか(ruka64)といいます。なんちゃってWeb Developerやってます。
+
+[about me](/about)に詳しく書いてます。私について知りたい方はそちらをご覧ください。
+
+# (本題)サイトを作り直しました
+
+元々はNext.jsで作っていましたが、Astro+Reactで作り直しました。
+
+パフォーマンス面の事を考えると、自己紹介とブログ程度であればAstroで十分だと考えたからです。
+
+静的サイトであればAstroが有利ですが、そうでなければ別のフレームワークを使っていこうかなといった所です。(最近はHonoXとQwikに興味が沸いてたりします。)
+
+`/`のプロフに関しては旧サイトのコードを少し改変して持ってきました。React+Motionで作ったものです。
+
+# このサイトの技術構成
+
+Astro+React+Tailwindをくっつけて作ってます。
+
+ブログの記事に関してはmdファイルをそのまま置いていますが、そのうちR2とかで管理しようかなとも考えています。
+
+## 画像テスト
+
+![icon](/src/content/blog/images/icon.jpg)
+
+## コードブロック
+
+```js
+console.log("Hello World!");
+```
+
+```sh
+#!/bin/bash
+
+echo "Hello World!"
+exit 0
+```
+
+# ブログの用途
+
+[Zenn](https://zenn.dev/r64)等に記事を投稿することもありますが、Zennに投稿するほどでもない物等はここに投稿しようかと思います。
+
+あとはZennにnoindexされた記事なんかもあればここに移動します。管理しているのは自分なのでやりたい放題ってわけです。
