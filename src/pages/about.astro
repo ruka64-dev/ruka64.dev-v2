@@ -3,7 +3,24 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="だれ？" description="私(るか)について">
-	<div class="flex justify-center">
-		<h1>だれ？</h1>
+	<div class="flex flex-col items-center">
+		<div class="sm:w-[40rem] w-full m-8 p-4 border border-gray-600 rounded-2xl">
+			<h1 class="text-3xl font-bold">だれ？</h1>
+			<p>るか(ruka64)といいます。</p>
+			<p>なんちゃってWeb Developerやってます。</p>
+			<h1 class="text-3xl font-bold mt-3">趣味</h1>
+			<ul class="list-disc ml-6">
+				<li>コードを書く(JavaScript, JSX, etc)</li>
+				<li>VALORANTをする</li>
+				<li>Fediverseの世界でくつろぐ</li>
+				<li>音楽を聴く</li>
+			</ul>
+			<h1 class="text-3xl font-bold mt-3">連絡先</h1>
+			<ul class="list-disc ml-6">
+				<li>Discord: ruka64___</li>
+				<li>Mail: me@ruka64.dev</li>
+				<li>Misskey: @tc39@mk.shrimpia.network</li>
+			</ul>
+		</div>
 	</div>
 </Layout>
