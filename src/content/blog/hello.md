@@ -2,7 +2,8 @@
 draft: "false"
 title: "サイトを作り直した話"
 description: "サイトを作り直した経緯について"
-pubDate: "2025-02-16 00:00"
+pubDate: "2025-02-16 13:59"
+updatedDate: "2025-02-16 14:21"
 ---
 
 # こんにちは！
