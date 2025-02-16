@@ -29,7 +29,7 @@ Astro+React+Tailwindをくっつけて作ってます。
 
 ## 画像テスト
 
-![icon](/src/content/blog/images/icon.jpg)
+![icon](/public/content/images/icon.jpg)
 
 ## コードブロック
 
