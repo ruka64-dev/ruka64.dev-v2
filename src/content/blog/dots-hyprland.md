@@ -1,5 +1,5 @@
 ---
-draft: "true"
+draft: "false"
 title: "dots-hyprlandを触る"
 description: "Hyprlandの良さを少し語りながらdots-hyprlandを導入していく"
 pubDate: "2025-02-19 23:05"
