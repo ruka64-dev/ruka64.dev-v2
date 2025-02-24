@@ -1,0 +1,9 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const { AUTH_USER, AUTH_PASS } = Astro.locals.runtime.env;
+---
+
+<Layout title="d" description="t">
+	<h1>{AUTH_USER}:{AUTH_PASS}</h1>
+</Layout>
