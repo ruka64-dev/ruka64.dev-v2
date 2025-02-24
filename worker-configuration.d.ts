@@ -2,4 +2,6 @@
 
 interface Env {
 	API_ENDPOINT: string;
+	AUTH_USER: string;
+	AUTH_PASS: string;
 }

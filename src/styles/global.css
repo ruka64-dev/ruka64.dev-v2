@@ -21,6 +21,26 @@
 }
 
 @layer base {
+	h1 {
+		font-weight: var(--font-weight-bold);
+		font-size: var(--text-3xl);
+	}
+	h1 {
+		font-weight: var(--font-weight-bold);
+		font-size: var(--text-2xl);
+	}
+	h1 {
+		font-weight: var(--font-weight-bold);
+		font-size: var(--text-xl);
+	}
+	h1 {
+		font-weight: var(--font-weight-bold);
+		font-size: 1rem;
+	}
+	img {
+		border-radius: var(--radius-xl);
+		margin: 0;
+	}
 	a {
 		color: #32c5ff;
 		transition: color 0.25s ease;

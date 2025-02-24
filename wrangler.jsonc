@@ -28,7 +28,11 @@
 	 * Environment Variables
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 	 */
-	"vars": { "API_ENDPOINT": "http://127.0.0.1:8787" }
+	"vars": { 
+		"API_ENDPOINT": "http://127.0.0.1:8787",
+		"AUTH_USER": "admin",
+		"AUTH_PASS": "admin"
+	}
 	/**
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/

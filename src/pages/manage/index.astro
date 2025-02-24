@@ -1,0 +1,22 @@
+---
+import { BasicAuth } from "../../func/auth";
+import Layout from "../../layouts/Layout.astro";
+import Editor from "../../components/Editor";
+
+const authorization = Astro.request.headers.get("authorization");
+const { AUTH_USER, AUTH_PASS } = Astro.locals.runtime.env;
+const auth = BasicAuth(Astro.request.headers, AUTH_USER, AUTH_PASS);
+if (!auth) {
+	Astro.response.status = 401;
+	Astro.response.headers.set("WWW-Authenticate", 'Basic realm="realm"');
+	Astro.response.headers.set("Content-Length", "0");
+} else {
+	Astro.response.status = 200;
+	Astro.response.headers.delete("WWW-Authenticate");
+	Astro.response.headers.delete("Content-Length");
+}
+---
+
+<Layout title="it works" description="hello!">
+	<Editor client:only="react" />
+</Layout>
