@@ -3,8 +3,16 @@ type Result = {
 	message: string;
 };
 
+/**
+ * NOTE: uploaded is unix date
+ */
 export type ArticleList = Result & {
-	data: string[];
+	data: {
+		id: string;
+		title: string;
+		description: string;
+		uploaded: number;
+	}[];
 };
 
 /**
@@ -13,8 +21,10 @@ export type ArticleList = Result & {
 export type GetArticle = Result & {
 	data: {
 		title: string;
+		description: string;
 		slug: string;
 		createdAt: string;
+		updatedAt: string | null;
 		content: string;
 	};
 };

@@ -2,7 +2,18 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import DateFormatter from "../../components/DateFormatter.astro";
-const posts = (
+
+import type { ArticleList } from "../../types/R2";
+
+const ENDPOINT = import.meta.env.API_ENDPOINT;
+
+console.log("ENDPOINT:", ENDPOINT);
+
+const res = (await (await fetch(ENDPOINT + "/articles/")).json()) as ArticleList;
+
+const posts = res.data.sort((a, b) => b.uploaded.valueOf() - a.uploaded.valueOf());
+
+const old_posts = (
 	await getCollection("blog", ({ data }) => {
 		return data.draft === false;
 	})
@@ -16,16 +27,11 @@ const posts = (
 				posts.map((post) => (
 					<li class="m-2 p-4 border-2 border-gray-800 rounded-xl">
 						<a href={`/articles/${post.id}`} class="no-href-color">
-							<p class="text-3xl">{post.data.title}</p>
-							<p>{post.data.description}</p>
+							<p class="text-3xl">{post.title}</p>
+							<p>{post.description}</p>
 							<p class="text-gray-400">
-								Published: <DateFormatter date={post.data.pubDate} />
+								Published: <DateFormatter date={new Date(post.uploaded)} />
 							</p>
-							{post.data.updatedDate && (
-								<p class="text-gray-400">
-									Updated: <DateFormatter date={post.data.updatedDate} />
-								</p>
-							)}
 						</a>
 					</li>
 				))

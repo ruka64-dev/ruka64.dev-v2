@@ -4,21 +4,23 @@ import { render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Articles from "../../layouts/Articles.astro";
 
-export async function getStaticPaths() {
-	const posts = await getCollection("blog");
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
-}
-type Props = CollectionEntry<"blog">;
+import type { GetArticle } from "../../types/R2";
 
-const post = Astro.props;
-const { Content } = await render(post);
+const ENDPOINT = import.meta.env.API_ENDPOINT;
+
+console.log("Path: ", Astro.params.slug);
+
+const res = await fetch(ENDPOINT + `/articles/${Astro.params.slug}`);
+if (!res.ok) {
+	return Astro.redirect("/404");
+}
+const post = ((await res.json()) as GetArticle).data;
+
+const updatedDate = post.updatedAt ? new Date(Number(post.updatedAt)) : null;
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
-	<Articles {...post.data}>
-		<Content />
+<Layout title={post.title} description={post.description}>
+	<Articles title={post.title} pubDate={new Date(Number(post.createdAt))} updatedDate={updatedDate}>
+		<div set:html={post.content} />
 	</Articles>
 </Layout>
