@@ -5,11 +5,11 @@ import DateFormatter from "../../components/DateFormatter.astro";
 
 import type { ArticleList } from "../../types/R2";
 
-const ENDPOINT = import.meta.env.API_ENDPOINT;
+const { API_ENDPOINT } = Astro.locals.runtime.env;
 
-console.log("ENDPOINT:", ENDPOINT);
+console.log("ENDPOINT:", API_ENDPOINT);
 
-const res = (await (await fetch(ENDPOINT + "/articles/")).json()) as ArticleList;
+const res = (await (await fetch(API_ENDPOINT + "/articles/")).json()) as ArticleList;
 
 const posts = res.data.sort((a, b) => b.uploaded.valueOf() - a.uploaded.valueOf());
 
