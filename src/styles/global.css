@@ -25,15 +25,15 @@
 		font-weight: var(--font-weight-bold);
 		font-size: var(--text-3xl);
 	}
-	h1 {
+	h2 {
 		font-weight: var(--font-weight-bold);
 		font-size: var(--text-2xl);
 	}
-	h1 {
+	h3 {
 		font-weight: var(--font-weight-bold);
 		font-size: var(--text-xl);
 	}
-	h1 {
+	h4 {
 		font-weight: var(--font-weight-bold);
 		font-size: 1rem;
 	}

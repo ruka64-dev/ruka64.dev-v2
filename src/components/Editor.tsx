@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import SimpleMde from "react-simplemde-editor";
-import "easymde/dist/easymde.min.css";
 import DOMPurify from "dompurify";
-import { Marked } from "marked";
-import { markedHighlight } from "marked-highlight";
+import "easymde/dist/easymde.min.css";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.min.css";
+import { Marked } from "marked";
+import { markedHighlight } from "marked-highlight";
+import { useState } from "react";
+import SimpleMde from "react-simplemde-editor";
+import "../styles/easymde-custom.css";
 
 export default function Editor() {
 	const marked = new Marked(
@@ -25,8 +26,8 @@ export default function Editor() {
 
 	return (
 		<div className="flex flex-row justify-center">
-			<SimpleMde className="bg-gray-900 w-full flex-1" value={markdownValue} onChange={onChange} />
-			<div className="flex-1">
+			<SimpleMde className="bg-black w-full flex-1 m-4" value={markdownValue} onChange={onChange} />
+			<div className="flex-1 m-4">
 				<div
 					dangerouslySetInnerHTML={{
 						__html: DOMPurify.sanitize(marked.parse(markdownValue) as string),
