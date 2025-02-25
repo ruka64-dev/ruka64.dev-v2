@@ -1,7 +1,7 @@
 .CodeMirror {
 	color: rgb(var(--colors-secondary-dark)) !important;
-	border-radius: 8px !important;
-	border-color: rgb(var(--border-color-line-dark)) !important;
+	border-radius: 0px !important;
+	border-color: var(--color-gray-700) !important;
 	background-color: rgb(var(--background-color-bg-white-dark)) !important;
 }
 

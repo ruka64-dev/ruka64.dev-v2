@@ -18,8 +18,9 @@ export default function Editor() {
 			},
 		}),
 	);
+	const isDraft = document.getElementById("data-isdraft") || false;
 	const mdContent =
-		document.getElementById("editor-data")?.getAttribute("data-content") || "Initial Text";
+		document.getElementById("md-content")?.getAttribute("data-content") || "Initial Text";
 	const [markdownValue, setMarkdownValue] = useState(mdContent);
 
 	const onChange = (value: string) => {
@@ -27,15 +28,33 @@ export default function Editor() {
 	};
 
 	return (
-		<div className="flex flex-row justify-center">
-			<SimpleMde className="bg-black w-full flex-1 m-4" value={markdownValue} onChange={onChange} />
-			<div className="flex-1 m-4">
-				<div
-					dangerouslySetInnerHTML={{
-						__html: DOMPurify.sanitize(marked.parse(markdownValue) as string),
-					}}
-					className="w-full"
-				></div>
+		<div>
+			{isDraft && <p className="text-yellow-300 text-center">WARNING: This is Draft Article!</p>}
+			<div className="flex flex-row justify-center">
+				<button className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400">
+					Button
+				</button>
+				<button className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400">
+					Button
+				</button>
+				<button className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400">
+					Button
+				</button>
+			</div>
+			<div className="flex flex-row justify-center">
+				<SimpleMde
+					className="w-full flex-1 m-4 border border-gray-400"
+					value={markdownValue}
+					onChange={onChange}
+				/>
+				<div className="flex-1 px-4 m-4 border border-gray-400">
+					<div
+						dangerouslySetInnerHTML={{
+							__html: DOMPurify.sanitize(marked.parse(markdownValue) as string),
+						}}
+						className="w-full"
+					></div>
+				</div>
 			</div>
 		</div>
 	);

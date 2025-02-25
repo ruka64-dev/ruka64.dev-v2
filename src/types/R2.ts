@@ -11,7 +11,7 @@ export type ArticleList = Result & {
 		id: string;
 		title: string;
 		description: string;
-		draft: boolean;
+		draft: string;
 		uploaded: number;
 	}[];
 };
@@ -24,7 +24,7 @@ export type GetArticle = Result & {
 		title: string;
 		description: string;
 		slug: string;
-		draft: boolean;
+		draft: string;
 		createdAt: string;
 		updatedAt: string | null;
 		markdownContent: string;

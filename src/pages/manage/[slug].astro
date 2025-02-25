@@ -29,6 +29,7 @@ console.log(post);
 ---
 
 <Layout title="Article Editor" description="Admin Only">
-	<div id="editor-data" data-content={post.markdownContent}></div>
+	{post.draft == "true" && <div id="data-isdraft" />}
+	<div id="md-content" data-content={post.markdownContent}></div>
 	<Editor client:only="react" />
 </Layout>
