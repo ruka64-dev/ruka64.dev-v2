@@ -28,7 +28,7 @@ const post = ((await res.json()) as GetArticle).data;
 console.log(post);
 ---
 
-<Layout title="it works" description="hello!">
+<Layout title="Article Editor" description="Admin Only">
 	<div id="editor-data" data-content={post.markdownContent}></div>
 	<Editor client:only="react" />
 </Layout>

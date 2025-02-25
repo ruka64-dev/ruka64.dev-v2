@@ -11,13 +11,9 @@ console.log("ENDPOINT:", API_ENDPOINT);
 
 const res = (await (await fetch(API_ENDPOINT + "/articles/")).json()) as ArticleList;
 
-const posts = res.data.sort((a, b) => b.uploaded.valueOf() - a.uploaded.valueOf());
-
-const old_posts = (
-	await getCollection("blog", ({ data }) => {
-		return data.draft === false;
-	})
-).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const posts = res.data
+	.filter((post) => !post.draft)
+	.sort((a, b) => b.uploaded.valueOf() - a.uploaded.valueOf());
 ---
 
 <Layout title="ブログ" description="Hello, I'm ruka64(るか)。">
