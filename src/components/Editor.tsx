@@ -18,7 +18,9 @@ export default function Editor() {
 			},
 		}),
 	);
-	const [markdownValue, setMarkdownValue] = useState("Initial value");
+	const mdContent =
+		document.getElementById("editor-data")?.getAttribute("data-content") || "Initial Text";
+	const [markdownValue, setMarkdownValue] = useState(mdContent);
 
 	const onChange = (value: string) => {
 		setMarkdownValue(value);
