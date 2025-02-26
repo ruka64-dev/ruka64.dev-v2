@@ -42,11 +42,13 @@ export default function Editor() {
 				</button>
 			</div>
 			<div className="flex flex-row justify-center">
-				<SimpleMde
-					className="w-full flex-1 m-4 border border-gray-400"
-					value={markdownValue}
-					onChange={onChange}
-				/>
+				<div className="w-full flex-1 m-4 border border-gray-400">
+					<SimpleMde
+						className="w-full"
+						value={markdownValue}
+						onChange={onChange}
+					/>
+				</div>
 				<div className="flex-1 px-4 m-4 border border-gray-400">
 					<div
 						dangerouslySetInnerHTML={{

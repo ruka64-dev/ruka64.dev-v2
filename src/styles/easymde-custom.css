@@ -14,9 +14,7 @@
 }
 
 .editor-toolbar {
-	color: rgb(var(--colors-tertiary-dark)) !important;
-	border: none !important;
-	background-color: rgb(var(--background-color-bg-white-dark)) !important;
+	display:none;
 }
 
 .separator {
