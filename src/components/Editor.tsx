@@ -27,12 +27,19 @@ export default function Editor() {
 		setMarkdownValue(value);
 	};
 
+	const devEv = () => {
+		console.log(markdownValue);
+	};
+
 	return (
 		<div>
 			{isDraft && <p className="text-yellow-300 text-center">WARNING: This is Draft Article!</p>}
 			<div className="flex flex-row justify-center">
-				<button className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400">
-					Button
+				<button
+					className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400"
+					onClick={devEv}
+				>
+					Dev
 				</button>
 				<button className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400">
 					Button
@@ -40,14 +47,16 @@ export default function Editor() {
 				<button className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400">
 					Button
 				</button>
+
+				<label className="flex items-center cursor-pointer justify-self-end">
+					<input type="checkbox" value="" className="sr-only peer"></input>
+					<div className="relative w-11 h-6 bg-gray-700 rounded-full peer transition-colors peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-blue-600"></div>
+					<span className="ms-3 text-lg font-medium">Toggle me</span>
+				</label>
 			</div>
 			<div className="flex flex-row justify-center">
 				<div className="w-full flex-1 m-4 border border-gray-400">
-					<SimpleMde
-						className="w-full"
-						value={markdownValue}
-						onChange={onChange}
-					/>
+					<SimpleMde className="w-full" value={markdownValue} onChange={onChange} />
 				</div>
 				<div className="flex-1 px-4 m-4 border border-gray-400">
 					<div
