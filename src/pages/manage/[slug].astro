@@ -1,8 +1,8 @@
 ---
 import { BasicAuth } from "../../func/auth";
-import Layout from "../../layouts/Layout.astro";
 import Editor from "../../components/Editor";
 import type { GetArticle } from "../../types/R2";
+import EditorLayout from "../../layouts/EditorLayout.astro";
 
 const authorization = Astro.request.headers.get("authorization");
 const { AUTH_USER, AUTH_PASS } = Astro.locals.runtime.env;
@@ -28,8 +28,8 @@ const post = ((await res.json()) as GetArticle).data;
 console.log(post);
 ---
 
-<Layout title="Article Editor" description="Admin Only">
+<EditorLayout title="Article Editor" description="Admin Only">
 	{post.draft == "true" && <div id="data-isdraft" />}
 	<div id="md-content" data-content={post.markdownContent}></div>
 	<Editor client:only="react" />
-</Layout>
+</EditorLayout>
