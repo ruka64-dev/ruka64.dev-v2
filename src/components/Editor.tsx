@@ -33,27 +33,30 @@ export default function Editor() {
 
 	return (
 		<div>
-			{isDraft && <p className="text-yellow-300 text-center">WARNING: This is Draft Article!</p>}
-			<div className="flex flex-row justify-center">
-				<button
-					className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400"
-					onClick={devEv}
-				>
-					Dev
-				</button>
-				<button className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400">
-					Button
-				</button>
-				<button className="m-2 rounded-xl border-2 border-gray-200 py-1.5 px-2.5 text-center text-lg hover:text-gray-400 hover:border-gray-400">
-					Button
-				</button>
-
-				<label className="flex items-center cursor-pointer justify-self-end">
-					<input type="checkbox" value="" className="sr-only peer"></input>
-					<div className="relative w-11 h-6 bg-gray-700 rounded-full peer transition-colors peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-blue-600"></div>
-					<span className="ms-3 text-lg font-medium">Toggle me</span>
-				</label>
+			<div className="flex sticky top-0 box-border h-min bg-gray-950 text-xl break-words break-keep border-b-2 border-gray-900">
+				<header className="flex w-full h-14 p-4 justify-between items-center text-white shrink-0">
+					<h2>Article Editor</h2>
+					<ul className="list-none flex gap-4">
+						<li>
+							<label className="flex items-center justify-self-center cursor-pointer h-full">
+								<input type="checkbox" value="" className="sr-only peer"></input>
+								<div className="relative w-11 h-6 bg-gray-700 rounded-full peer transition-colors peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-blue-600"></div>
+								<span className="ms-3 text-lg font-medium">Draft</span>
+							</label>
+						</li>
+						<li>
+							<button
+								className="h-full rounded-xl border border-gray-200 py-1 px-3.5 text-center text-lg hover:text-gray-400 hover:border-gray-400"
+								onClick={devEv}
+							>
+								Save
+							</button>
+						</li>
+					</ul>
+				</header>
 			</div>
+
+			{/* {isDraft && <p className="text-yellow-300 text-center">WARNING: This is Draft Article!</p>} */}
 			<div className="flex flex-row justify-center">
 				<div className="w-full flex-1 m-4 border border-gray-400">
 					<SimpleMde className="w-full" value={markdownValue} onChange={onChange} />
