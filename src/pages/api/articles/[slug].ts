@@ -26,10 +26,11 @@ export const POST: APIRoute = async (context) => {
 	const { title, content, draft, isNew } = (await req.json()) as PostArticle;
 
 	try {
-		if (isNew) createArticle(API_ENDPOINT, title, slug, content, draft);
-		else updateArticle(API_ENDPOINT, title, slug, content, draft);
+		let res: any = "";
+		if (isNew) res = createArticle(API_ENDPOINT, title, slug, content, draft);
+		else res = updateArticle(API_ENDPOINT, title, slug, content, draft);
 
-		return ResultRes(`Done at ${new Date().getTime()}, endpoint leak: ${API_ENDPOINT}`);
+		return ResultRes(`Done at ${new Date().getTime()}, res: ${res}`);
 	} catch (e) {
 		console.log(e);
 		return ResultRes(`${e}`, false, 500);
@@ -59,9 +60,10 @@ async function createArticle(
 	if (!response.ok) {
 		const json = await response.json();
 		console.error("Failed", json);
+		return json;
 	}
 
-	return true;
+	return await response.json();
 }
 
 async function updateArticle(
@@ -86,7 +88,8 @@ async function updateArticle(
 	if (!response.ok) {
 		const json = await response.json();
 		console.error("Failed", json);
+		return json;
 	}
 
-	return true;
+	return await response.json();
 }
