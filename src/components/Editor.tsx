@@ -4,7 +4,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.min.css";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
-import { useId, useState, type ChangeEventHandler } from "react";
+import { useState } from "react";
 import SimpleMde from "react-simplemde-editor";
 import "../styles/easymde-custom.css";
 
@@ -35,10 +35,7 @@ export default function Editor() {
 	const slug = document.getElementById("slug")?.getAttribute("data-slug") || "fk";
 
 	const SaveArticle = async () => {
-		console.log(draftState);
-		console.log("Fire");
-		console.log("Content", markdownValue);
-		console.log("isNew", isNewPost);
+		setButtonText("Deploying...");
 		const res = await fetch(`/api/articles/${slug}`, {
 			method: "POST",
 			headers: {
@@ -52,7 +49,7 @@ export default function Editor() {
 			}),
 		});
 		if (res.ok) {
-			setButtonText(isNewPost ? "Published!" : "Updated!");
+			window.location.href = `/articles/${slug}`;
 		} else {
 			setButtonText("Failed!");
 		}
