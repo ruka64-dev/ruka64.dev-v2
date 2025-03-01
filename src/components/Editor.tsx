@@ -4,7 +4,7 @@ import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.min.css";
 import { Marked } from "marked";
 import { markedHighlight } from "marked-highlight";
-import { useState } from "react";
+import { useState, type ChangeEventHandler } from "react";
 import SimpleMde from "react-simplemde-editor";
 import "../styles/easymde-custom.css";
 
@@ -18,7 +18,7 @@ export default function Editor() {
 			},
 		}),
 	);
-	const isDraft = document.getElementById("data-isdraft") || false;
+	const isDraft = document.getElementById("data-isdraft") ? true : false;
 	const mdContent =
 		document.getElementById("md-content")?.getAttribute("data-content") || "Initial Text";
 	const [markdownValue, setMarkdownValue] = useState(mdContent);
@@ -27,9 +27,19 @@ export default function Editor() {
 		setMarkdownValue(value);
 	};
 
-	const devEv = () => {
-		console.log(markdownValue);
+	const SaveArticle = () => {
+		console.log(draftState);
+		console.log("Fire");
 	};
+
+	const valChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+		setDraftState(ev.target.checked);
+		setButtonText(ev.target.checked ? "Save Draft" : "Deploy 🚀");
+	};
+
+	const [draftState, setDraftState] = useState(isDraft);
+
+	const [buttonText, setButtonText] = useState(draftState ? "Save Draft" : "Deploy 🚀");
 
 	return (
 		<div>
@@ -39,24 +49,30 @@ export default function Editor() {
 					<ul className="list-none flex gap-4">
 						<li>
 							<label className="flex items-center justify-self-center cursor-pointer h-full">
-								<input type="checkbox" value="" className="sr-only peer"></input>
+								<input
+									type="checkbox"
+									value=""
+									defaultChecked={isDraft}
+									className="sr-only peer"
+									onChange={valChange}
+								></input>
 								<div className="relative w-11 h-6 bg-gray-700 rounded-full peer transition-colors peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all border-gray-600 peer-checked:bg-blue-600"></div>
-								<span className="ms-3 text-lg font-medium">Draft</span>
+								<span className="ms-3 text-lg font-medium">Draft: {draftState ? "Yes" : "No"}</span>
 							</label>
 						</li>
 						<li>
 							<button
 								className="h-full rounded-xl border border-gray-200 py-1 px-3.5 text-center text-lg hover:text-gray-400 hover:border-gray-400"
-								onClick={devEv}
+								onClick={SaveArticle}
 							>
-								Save
+								{buttonText}
 							</button>
 						</li>
 					</ul>
 				</header>
 			</div>
 
-			{/* {isDraft && <p className="text-yellow-300 text-center">WARNING: This is Draft Article!</p>} */}
+			{/* {draftState && <p className="text-yellow-300 text-center">WARNING: This is Draft Article!</p>} */}
 			<div className="flex flex-row justify-center">
 				<div className="w-full flex-1 m-4 border border-gray-400">
 					<SimpleMde className="w-full" value={markdownValue} onChange={onChange} />
