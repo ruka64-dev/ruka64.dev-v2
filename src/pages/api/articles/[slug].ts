@@ -30,7 +30,7 @@ export const POST: APIRoute = async (context) => {
 		if (isNew) res = await createArticle(API_ENDPOINT, title, slug, content, draft);
 		else res = await updateArticle(API_ENDPOINT, title, slug, content, draft);
 
-		return ResultRes(`Done at ${new Date().getTime()}, res: ${res}`);
+		return ResultRes(`OK`);
 	} catch (e) {
 		console.log(e);
 		return ResultRes(`${e}`, false, 500);
