@@ -21,6 +21,10 @@ export default function Editor() {
 	const isDraft = document.getElementById("data-isdraft") ? true : false;
 	const mdContent =
 		document.getElementById("md-content")?.getAttribute("data-content") || "Initial Text";
+
+	const isNewPost = document.getElementById("md-content")?.getAttribute("data-content")
+		? false
+		: true;
 	const [markdownValue, setMarkdownValue] = useState(mdContent);
 
 	const onChange = (value: string) => {
@@ -30,6 +34,7 @@ export default function Editor() {
 	const SaveArticle = () => {
 		console.log(draftState);
 		console.log("Fire");
+		console.log("isNew", isNewPost);
 	};
 
 	const valChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -72,7 +77,7 @@ export default function Editor() {
 				</header>
 			</div>
 
-			{/* {draftState && <p className="text-yellow-300 text-center">WARNING: This is Draft Article!</p>} */}
+			{isNewPost && <p className="text-yellow-300 text-center">!! You writing new article !!</p>}
 			<div className="flex flex-row justify-center">
 				<div className="w-full flex-1 m-4 border border-gray-400">
 					<SimpleMde className="w-full" value={markdownValue} onChange={onChange} />

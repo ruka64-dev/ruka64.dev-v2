@@ -20,16 +20,19 @@ if (!auth) {
 const { API_ENDPOINT } = Astro.locals.runtime.env;
 console.log("Path: ", Astro.params.slug);
 
+let post: GetArticle["data"] | null;
+
 const res = await fetch(API_ENDPOINT + `/articles/${Astro.params.slug}`);
 if (!res.ok) {
-	return Astro.redirect("/404");
+	post = null;
+} else {
+	post = ((await res.json()) as GetArticle).data;
+	console.log(post);
 }
-const post = ((await res.json()) as GetArticle).data;
-console.log(post);
 ---
 
 <EditorLayout title="Article Editor" description="Admin Only">
-	{post.draft == "true" && <div id="data-isdraft" />}
-	<div id="md-content" data-content={post.markdownContent}></div>
+	{post?.draft == "true" && <div id="data-isdraft" />}
+	{post && <div id="md-content" data-content={post?.markdownContent} />}
 	<Editor client:only="react" />
 </EditorLayout>
