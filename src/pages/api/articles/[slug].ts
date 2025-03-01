@@ -29,7 +29,7 @@ export const POST: APIRoute = async (context) => {
 		if (isNew) createArticle(API_ENDPOINT, title, slug, content, draft);
 		else updateArticle(API_ENDPOINT, title, slug, content, draft);
 
-		return ResultRes("OK");
+		return ResultRes(`Done at ${new Date().getTime()}, endpoint leak: ${API_ENDPOINT}`);
 	} catch (e) {
 		console.log(e);
 		return ResultRes(`${e}`, false, 500);
