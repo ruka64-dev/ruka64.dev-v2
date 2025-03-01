@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import type { PostArticle } from "../../types/LocalAPI";
+import type { PostArticle } from "../../../types/LocalAPI";
 
 function ResultRes(message: string, success: boolean = true, code: number = 200) {
 	const json = JSON.stringify({

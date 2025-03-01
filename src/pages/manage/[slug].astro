@@ -32,7 +32,11 @@ if (!res.ok) {
 ---
 
 <EditorLayout title="Article Editor" description="Admin Only">
+	<div id="slug" data-slug={Astro.params.slug}></div>
 	{post?.draft == "true" && <div id="data-isdraft" />}
-	{post && <div id="md-content" data-content={post?.markdownContent} />}
+	{post && (
+		<div id="md-title" data-title={post?.title}/>
+		<div id="md-content" data-content={post?.markdownContent} />
+	)}
 	<Editor client:only="react" />
 </EditorLayout>
