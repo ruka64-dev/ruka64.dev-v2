@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "wrangler types && astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "wrangler pages dev ./dist",
     "check": "wrangler types && astro check",
     "astro": "astro"
   },
