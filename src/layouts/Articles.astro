@@ -74,6 +74,7 @@ const { title, pubDate, updatedDate } = Astro.props;
 			const code = codeBlock.textContent;
 			const parent = codeBlock.parentElement?.closest("pre");
 			if (!code) return;
+			if (!codeBlock.className.split("-")[1]) return;
 
 			if (parent) {
 				parent.outerHTML = highlighter.codeToHtml(code, {
