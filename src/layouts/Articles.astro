@@ -61,3 +61,34 @@ const { title, pubDate, updatedDate } = Astro.props;
 		</div>
 	</div>
 </article>
+
+<script>
+	import { createHighlighter, bundledLanguages } from "shiki/bundle/web";
+	async function highlighter() {
+		const codeBlocks = document.querySelectorAll("code");
+		const highlighter = await createHighlighter({
+			themes: ["dracula"],
+			langs: Object.keys(bundledLanguages),
+		});
+		codeBlocks.forEach(async (codeBlock) => {
+			const code = codeBlock.textContent;
+			const parent = codeBlock.parentElement?.closest("pre");
+			if (!code) return;
+
+			if (parent) {
+				parent.outerHTML = highlighter.codeToHtml(code, {
+					theme: "dracula",
+					lang: codeBlock.className.split("-")[1],
+				});
+			} else {
+				const wrapper = document.createElement("pre");
+				wrapper.outerHTML = highlighter.codeToHtml(code, {
+					theme: "dracula",
+					lang: codeBlock.className.split("-")[1],
+				});
+				codeBlock.replaceWith(wrapper);
+			}
+		});
+	}
+	highlighter();
+</script>

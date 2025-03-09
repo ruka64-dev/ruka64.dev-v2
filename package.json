@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "prettier-plugin-astro": "^0.14.1",
+    "shiki": "^3.1.0",
     "wrangler": "^3.109.2"
   }
 }

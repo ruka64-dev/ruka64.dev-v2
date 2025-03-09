@@ -73,6 +73,37 @@ export default function Editor() {
 
 	const [buttonText, setButtonText] = useState(draftState ? "Save Draft" : "Deploy 🚀");
 
+	const classList = [
+		"w-full",
+		"prose-h1:font-bold",
+		"prose-h2:font-bold",
+		"prose-h3:font-bold",
+		"prose-h4:font-bold",
+		"prose-h1:text-3xl",
+		"prose-h2:text-2xl",
+		"prose-h3:text-xl",
+		"prose-h4:text-[1rem]",
+		"prose-img:rounded-xl",
+		"prose-img-m-0",
+		"prose-pre:mt-3",
+		"prose-pre:mb-3",
+		"prose-h1:mt-3",
+		"prose-h1:mb-3",
+		"prose-h2:mt-3",
+		"prose-h2:mb-3",
+		"prose-h3:mt-3",
+		"prose-h3:mb-3",
+		"prose-h4:mt-3",
+		"prose-h4:mb-3",
+		"prose-p:mt-2",
+		"prose-p:mb-2",
+		"prose-a:mt-2",
+		"prose-a:mb-2",
+		"prose-ul:list-disc",
+		"prose-ul:ml-4",
+		"prose-pre:p-0",
+	];
+
 	return (
 		<div>
 			<div className="flex sticky top-0 box-border h-min bg-gray-950 text-xl break-words break-keep border-b-2 border-gray-900">
@@ -128,7 +159,7 @@ export default function Editor() {
 						dangerouslySetInnerHTML={{
 							__html: DOMPurify.sanitize(marked.parse(markdownValue) as string),
 						}}
-						className="w-full"
+						className={classList.join(" ")}
 					></div>
 				</div>
 			</div>
